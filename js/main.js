@@ -70,7 +70,10 @@ function createWorkersTable(array) {
         for (let key in array[i]) {
             let td = document.createElement('td');
             if (key === 'wynagrodzenieKwota') {
-                td.innerHTML = array[i][key] + ' PLN';
+                let kwota = array[i][key];
+                console.log(kwota);
+                let newKwota = kwota.replace('.',','); // change . to ,
+                td.innerHTML = newKwota + ' PLN';
                 row.appendChild(td);
             } else if (key === 'wynagrodzenieWaluta') {
                 break;
@@ -107,7 +110,9 @@ function addNewWorker(el) {
     for (let key in newObjectUser) {
         let td = document.createElement('td');
         if (key === 'wynagrodzenieKwota') {
-            td.innerHTML = newObjectUser[key] + ' PLN';
+            let kwota = newObjectUser[key];
+            let newKwota = kwota.replace('.',',');
+            td.innerHTML = newKwota + ' PLN';
             row.appendChild(td);
         } else if (key === 'wynagrodzenieWaluta') {
             break;
@@ -170,9 +175,7 @@ function sum(array) {
     workersTableDiv.appendChild(sumDiv);
 }
 
-
 // CREATE SEARCH ENGINE FUNCTION
-
 function createSearchEngine() {
     let searchDiv = document.createElement('div');
     searchDiv.classList.add("search");
@@ -206,15 +209,15 @@ function createSearchEngine() {
     labelDzial.innerHTML = 'Dzial: ';
     searchFieldset.appendChild(labelDzial);
 
-   let inputDzial =  createSearchDzial(pracownicy);
-   searchFieldset.appendChild(inputDzial);
+    let inputDzial = createSearchDzial(pracownicy);
+    searchFieldset.appendChild(inputDzial);
 
-   let labelZarobkiOd = document.createElement('label');
-   labelZarobkiOd.setAttribute('for', "zarobki-od");
-   labelZarobkiOd.innerHTML = 'Zarobki od: ';
-   searchFieldset.appendChild(labelZarobkiOd);
+    let labelZarobkiOd = document.createElement('label');
+    labelZarobkiOd.setAttribute('for', "zarobki-od");
+    labelZarobkiOd.innerHTML = 'Zarobki od: ';
+    searchFieldset.appendChild(labelZarobkiOd);
 
-   let inputZarobkiOd = document.createElement("input");
+    let inputZarobkiOd = document.createElement("input");
     inputZarobkiOd.setAttribute('type', "text");
     inputZarobkiOd.setAttribute('name', "zarobki-od");
     inputZarobkiOd.setAttribute('id', "zarobki-od");
@@ -224,12 +227,12 @@ function createSearchEngine() {
     labelZarobkiDo.setAttribute('for', "zarobki-od: ");
     labelZarobkiDo.innerHTML = 'do: ';
     searchFieldset.appendChild(labelZarobkiDo);
- 
+
     let inputZarobkiDo = document.createElement("input");
-     inputZarobkiDo.setAttribute('type', "text");
-     inputZarobkiDo.setAttribute('name', "zarobki-do");
-     inputZarobkiDo.setAttribute('id', "zarobki-do");
-     searchFieldset.appendChild(inputZarobkiDo);
+    inputZarobkiDo.setAttribute('type', "text");
+    inputZarobkiDo.setAttribute('name', "zarobki-do");
+    inputZarobkiDo.setAttribute('id', "zarobki-do");
+    searchFieldset.appendChild(inputZarobkiDo);
 
     let submitInput = document.createElement("button");
     submitInput.setAttribute('id', 'search-button');
@@ -264,31 +267,30 @@ function createSearchDzial(array) {
         option.innerHTML = item;
         inputDzial.appendChild(option);
     }
- return inputDzial;
+    return inputDzial;
 }
 
 //Main Search function
-function searchData(el){
+function searchData(el) {
     el.preventDefault();
     let osoba = document.getElementById('osoba')
-    let osobaValue = osoba.value ;
+    let osobaValue = osoba.value;
     let dzial = document.getElementById('dzial-search');
     let dzialValue = dzial.value;
- 
+
 
     let zarobkiOd = document.getElementById('zarobki-od');
     let odValue = parseFloat(zarobkiOd.value);
     let zarobkiDo = document.getElementById('zarobki-do');
     let doValue = parseFloat(zarobkiDo.value);
- 
-    searchOsoba(pracownicy,osobaValue,dzialValue);
-    searchByWage(pracownicy,odValue,doValue);
+
+    searchOsoba(pracownicy, osobaValue, dzialValue);
+    searchByWage(pracownicy, odValue, doValue);
     document.forms[1].reset();
 }
 
 
-function searchOsoba(array,osobaValue,dzialValue){
-
+function searchOsoba(array, osobaValue, dzialValue) {
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
@@ -297,23 +299,19 @@ function searchOsoba(array,osobaValue,dzialValue){
             }
         }
     }
-    if(valueFound === false){
+    if (valueFound === false) {
         alert('Nie znaleziono pracowników');
     }
 }
 
 //search by wynagrodzenie function
-function searchByWage(array,a,b){
-
+function searchByWage(array, a, b) {
     for (let i = 0; i < array.length; i++) {
-         
-            if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b) ){
-                console.log(array[i]);
+        if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
+            console.log(array[i]);
         }
     }
 }
-
-
 
 createWorkersTable(pracownicy);
 sum(pracownicy);
