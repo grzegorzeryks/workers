@@ -167,7 +167,6 @@ function sum(array) {
     sumDiv.appendChild(handlowiecSumP);
     sumDiv.appendChild(totalSumP);
     let workersTableDiv = document.querySelector('.workers-table');
-    console.log(workersTableDiv);
 
     workersTableDiv.appendChild(sumDiv);
 }
@@ -270,7 +269,6 @@ function createSearchDzial(array) {
 }
 
 //Main Search function
-
 function searchData(el){
     el.preventDefault();
     let osoba = document.getElementById('osoba')
@@ -286,9 +284,6 @@ function searchData(el){
  
     searchOsoba(pracownicy,osobaValue,dzialValue);
     searchByWage(pracownicy,odValue,doValue);
-
-
-    
     document.forms[1].reset();
 }
 
@@ -309,7 +304,6 @@ function searchOsoba(array,osobaValue,dzialValue){
 }
 
 //search by wynagrodzenie function
-
 function searchByWage(array,a,b){
 
     for (let i = 0; i < array.length; i++) {
