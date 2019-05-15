@@ -71,7 +71,6 @@ function createWorkersTable(array) {
             let td = document.createElement('td');
             if (key === 'wynagrodzenieKwota') {
                 let kwota = array[i][key];
-                console.log(kwota);
                 let newKwota = kwota.replace('.',','); // change . to ,
                 td.innerHTML = newKwota + ' PLN';
                 row.appendChild(td);
@@ -183,6 +182,7 @@ function createSearchEngine() {
     let searchForm = document.createElement('form');
     searchForm.setAttribute('method', "post");
     searchForm.setAttribute('action', "submit.php");
+    searchForm.setAttribute('name', "search-form");
 
     searchDiv.appendChild(searchForm);
 
@@ -241,7 +241,10 @@ function createSearchEngine() {
     searchFieldset.appendChild(submitInput);
     submitInput.addEventListener('click', searchData);
 
+    let emptyDiv = document.createElement('div');
+
     document.body.appendChild(searchDiv);
+    document.body.appendChild(emptyDiv);
 }
 
 // ADD OPTIONS TO DZIAL SELECTION INPUT
@@ -273,12 +276,14 @@ function createSearchDzial(array) {
 //Main Search function
 function searchData(el) {
     el.preventDefault();
- 
+    validateForm()
+    // let body = document.querySelector('body');
+    // body.removeChild(document.querySelector('div:nth-child(5)'));
+    
     let osoba = document.getElementById('osoba')
     let osobaValue = osoba.value;
     let dzial = document.getElementById('dzial-search');
     let dzialValue = dzial.value;
-
 
     let zarobkiOd = document.getElementById('zarobki-od');
     let odValue = parseFloat(zarobkiOd.value);
@@ -286,9 +291,9 @@ function searchData(el) {
     let doValue = parseFloat(zarobkiDo.value);
 
     let searchEffect = searchOsoba(pracownicy, osobaValue, dzialValue,odValue,doValue);
-    // searchByWage(pracownicy, odValue, doValue);
     document.forms[1].reset();
     createWorkersTable(searchEffect); //create newWorkersTable
+    
 }
 
 
@@ -310,16 +315,31 @@ function searchOsoba(array, osobaValue, dzialValue,a,b) {
     return wynik;
 }
 
-//search by wynagrodzenie function
-// function searchByWage(array, a, b) {
-//     for (let i = 0; i < array.length; i++) {
-//         if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
-//             console.log(array[i]);
 
-//         }
-//     }
-// }
+// validate forms function
+
+function validateForm() {
+    let osoba = document.forms["search-form"]["osoba"].value;
+    let dzial = document.forms["search-form"]["dzial-search"].value;
+    let zarobkiOd = document.forms["search-form"]["zarobki-od"].value;
+    let zarobkiDo = document.forms["search-form"]["zarobki-do"].value;
+
+    if (osoba == '' &&  dzial === 'wybierz' && zarobkiOd === '' && zarobkiDo === '') {
+      alert("Wpisz dane!");
+
+      return false;
+    }
+    else {
+ 
+    }
+  }
+
+
+
 
 createWorkersTable(pracownicy);
 sum(pracownicy);
 createSearchEngine();
+
+// popraw kropke w sumach
+// walidacja
