@@ -167,7 +167,6 @@ function sum(array) {
     sumDiv.appendChild(handlowiecSumP);
     sumDiv.appendChild(totalSumP);
     let workersTableDiv = document.querySelector('.workers-table');
-
     workersTableDiv.appendChild(sumDiv);
 }
 
