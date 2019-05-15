@@ -273,6 +273,7 @@ function createSearchDzial(array) {
 //Main Search function
 function searchData(el) {
     el.preventDefault();
+ 
     let osoba = document.getElementById('osoba')
     let osobaValue = osoba.value;
     let dzial = document.getElementById('dzial-search');
@@ -284,34 +285,40 @@ function searchData(el) {
     let zarobkiDo = document.getElementById('zarobki-do');
     let doValue = parseFloat(zarobkiDo.value);
 
-    searchOsoba(pracownicy, osobaValue, dzialValue);
-    searchByWage(pracownicy, odValue, doValue);
+    let searchEffect = searchOsoba(pracownicy, osobaValue, dzialValue,odValue,doValue);
+    // searchByWage(pracownicy, odValue, doValue);
     document.forms[1].reset();
+    createWorkersTable(searchEffect); //create newWorkersTable
 }
 
 
-function searchOsoba(array, osobaValue, dzialValue) {
+function searchOsoba(array, osobaValue, dzialValue,a,b) {
+    let wynik = [];
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
-                valueFound = true;
-                console.log(array[i]);
+                wynik.push(array[i]);
             }
         }
     }
-    if (valueFound === false) {
-        alert('Nie znaleziono pracowników');
+    for (let i = 0; i < array.length; i++) {
+        if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
+            wynik.push(array[i]);
+        }
     }
+
+    return wynik;
 }
 
 //search by wynagrodzenie function
-function searchByWage(array, a, b) {
-    for (let i = 0; i < array.length; i++) {
-        if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
-            console.log(array[i]);
-        }
-    }
-}
+// function searchByWage(array, a, b) {
+//     for (let i = 0; i < array.length; i++) {
+//         if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
+//             console.log(array[i]);
+
+//         }
+//     }
+// }
 
 createWorkersTable(pracownicy);
 sum(pracownicy);
