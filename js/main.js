@@ -36,8 +36,10 @@ let pracownicy = [{
 ]
 
 
+
+
 // CREATE AND RENDER WORKERS TABLE
-function createWorkersTable(array) {
+function createWorkersTable(array,divName) {
     let workersTableDiv = document.createElement('div');
     workersTableDiv.classList.add('workers-table');
 
@@ -84,8 +86,8 @@ function createWorkersTable(array) {
         }
         table.appendChild(tHead);
         table.appendChild(tBody);
-        workersTableDiv.appendChild(table);
-        document.body.appendChild(workersTableDiv);
+      let workersTableDiv = document.querySelector(divName);
+      workersTableDiv.appendChild(table);
     }
 }
 
@@ -127,7 +129,7 @@ function addNewWorker(el) {
     workersTable.removeChild(document.querySelector('.sums'));
     sum(pracownicy);
 
-    //update search engine with new selection options
+    // update search engine with new selection options
     let body = document.querySelector('body');
     body.removeChild(document.querySelector('.search'));
     document.forms[0].reset();
@@ -241,10 +243,10 @@ function createSearchEngine() {
     searchFieldset.appendChild(submitInput);
     submitInput.addEventListener('click', searchData);
 
-    let emptyDiv = document.createElement('div');
+
 
     document.body.appendChild(searchDiv);
-    document.body.appendChild(emptyDiv);
+ 
 }
 
 // ADD OPTIONS TO DZIAL SELECTION INPUT
@@ -276,10 +278,18 @@ function createSearchDzial(array) {
 //Main Search function
 function searchData(el) {
     el.preventDefault();
-    validateForm()
-    // let body = document.querySelector('body');
-    // body.removeChild(document.querySelector('div:nth-child(5)'));
-    
+    validateForm();
+
+    // removing previous table with search effects
+    let searchDiv= document.querySelector('.search');
+
+    if ((document.querySelector('table:nth-child(2)')) === null) {
+        let emptyTable = document.createElement('table');
+        searchDiv.appendChild(emptyTable)
+    }
+
+    searchDiv.removeChild(document.querySelector('table:nth-child(2)'));
+
     let osoba = document.getElementById('osoba')
     let osobaValue = osoba.value;
     let dzial = document.getElementById('dzial-search');
@@ -292,7 +302,9 @@ function searchData(el) {
 
     let searchEffect = searchOsoba(pracownicy, osobaValue, dzialValue,odValue,doValue);
     document.forms[1].reset();
-    createWorkersTable(searchEffect); //create newWorkersTable
+    createWorkersTable(searchEffect,'.search');
+
+    
     
 }
 
@@ -337,9 +349,12 @@ function validateForm() {
 
 
 
-createWorkersTable(pracownicy);
+createWorkersTable(pracownicy,'.workers-table');
 sum(pracownicy);
 createSearchEngine();
+
+
+
 
 // popraw kropke w sumach
 // walidacja
