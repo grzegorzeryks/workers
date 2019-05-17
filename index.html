@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Pracownicy</title>
 </head>
 <body>
 
 
-  
+  <div class="wrapper">
 
   <form id="newUser" method="post" action="script.php">
         <fieldset>
@@ -18,7 +20,7 @@
         <input type="text" name="imie" id="imie" value="" required/>
         <label for="nazwisko">Nazwisko:</label>
         <input type="text" name="nazwisko" id="nazwisko" value="" required/>
-        <label for="dzial">Dział</label>
+        <label for="dzial">Dział:</label>
         <input type="dzial" name="dzial" id="dzial" value="" required/>
         <label for="wynagrodzenie">Wynagrodzenie:</label>
         <input type="text" name="wynagrodzenie" id="wynagrodzenie" value="" required/>
@@ -30,5 +32,6 @@
 <div class="workers-table"></div>
   <script type="text/javascript" src="./js/main.js">
   </script>
+  </div>
 </body>
 </html>

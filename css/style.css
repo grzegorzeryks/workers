@@ -1,0 +1,89 @@
+body {
+    background: rgb(175, 182, 252);
+    font-family: 'Roboto', sans-serif;
+}
+div {
+    background: whitesmoke;
+}
+
+.wrapper {
+    padding-top: 20px;
+}
+
+input {
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    border: none;
+    height: 30px;
+    color: #333333;
+    padding-left: 12px;
+}
+
+label{
+ padding: 0 10px 0 10px;
+}
+
+fieldset
+{
+  background-color:rgb(240, 239, 239);
+  border:none;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;	
+  border-radius:8px;	
+  padding:16px;	
+}
+
+legend {
+    font-weight: bold;
+}
+
+.sums{
+    padding:  0 0 20px 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+ tr:nth-child(even){background-color: #f2f2f2;}
+  
+ tr:hover {background-color: #ddd;}
+  
+ th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(76, 78, 175);
+    color: white;
+  }
+
+  button {
+    background-color: rgb(76, 78, 175); 
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  
+    cursor: pointer;
+    margin-left: 10px;
+}
+button:hover {
+    background-color: rgb(93, 95, 216); 
+}
+
+select {
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
