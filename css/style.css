@@ -1,5 +1,4 @@
 body {
-    background: rgb(175, 182, 252);
     font-family: 'Roboto', sans-serif;
 }
 div {
@@ -26,10 +25,7 @@ label{
 fieldset
 {
   background-color:rgb(240, 239, 239);
-  border:none;
-  -moz-border-radius:8px;
-  -webkit-border-radius:8px;	
-  border-radius:8px;	
+  border:none;	
   padding:16px;	
 }
 
