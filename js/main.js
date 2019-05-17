@@ -306,14 +306,9 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
     let wynik = new Set();
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
-            if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
+            if (array[i][key] === osobaValue || array[i][key] === dzialValue || (parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
                 wynik.add(array[i]);
             }
-        }
-    }
-    for (let i = 0; i < array.length; i++) {
-        if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
-            wynik.add(array[i]);
         }
     }
     let arrayWynik = Array.from(wynik);
