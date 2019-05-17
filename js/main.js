@@ -317,7 +317,7 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
         }
     }
     let arrayWynik = Array.from(wynik);
-    if(!(arrayWynik[0])){
+    if(!arrayWynik[0]){
         alert('Nie znaleziono pracowników!')
     }
     return arrayWynik;
