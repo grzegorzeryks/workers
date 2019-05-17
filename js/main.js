@@ -318,9 +318,6 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
         }
     }
     let arrayWynik = Array.from(wynik);
-    if (arrayWynik === []) {
-        alert('Nie znaleziono pracowników!')
-    }
     return arrayWynik;
 }
 
@@ -338,5 +335,3 @@ function validateForm() {
 createWorkersTable(pracownicy, '.workers-table');
 sum(pracownicy);
 createSearchEngine();
-
-// walidacja
