@@ -85,7 +85,7 @@ function createWorkersTable(array, divName) {
 }
 
 //ADD A NEW WORKER FUNCTION
-const form = document.getElementById("newUser");
+let form = document.getElementById("newUser");
 form.addEventListener('submit', addNewWorker);
 
 function addNewWorker(el) {
@@ -306,7 +306,7 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
     let wynik = new Set();
 
     for (let i = 0; i < array.length; i++) {
-        for (const key in array[i]) {
+        for (let key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue || parseFloat(array[i].wynagrodzenieKwota) >= a && parseFloat(array[i].wynagrodzenieKwota) <= b) {
                 wynik.add(array[i]);
             }
@@ -315,9 +315,7 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
 
     let arrayWynik = Array.from(wynik);
 
-
     //check if the inputs for kwota and name are filled
-    
     let empt = document.forms["search-form"]["osoba"].value;
     let empt1 = document.forms["search-form"]["zarobki-od"].value;
     let empt2 = document.forms["search-form"]["zarobki-do"].value;
@@ -331,14 +329,11 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
      arrayWynik = newArray;
     }
 
-
     if (!arrayWynik[0]) {
         alert('Nie znaleziono pracowników!')
     }
     return arrayWynik;
 }
-
-
 
 createWorkersTable(pracownicy, '.workers-table');
 sum(pracownicy);
