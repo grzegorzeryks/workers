@@ -39,18 +39,15 @@ let pracownicy = [{
 function createWorkersTable(array, divName) {
     let workersTableDiv = document.createElement('div');
     workersTableDiv.classList.add('workers-table');
-
     let table = document.createElement('table');
 
     //tHead
     let tHead = document.createElement('thead');
     let headerRow = document.createElement('tr');
-
     let imieHeader = document.createElement('th');
     let nazwiskoHeader = document.createElement('th');
     let dzialHeader = document.createElement('th');
     let wynagrodzenieHeader = document.createElement('th');
-
     imieHeader.innerHTML = 'Imię';
     nazwiskoHeader.innerHTML = 'Nazwisko';
     dzialHeader.innerHTML = 'Dział';
@@ -63,7 +60,6 @@ function createWorkersTable(array, divName) {
 
     //tBody
     let tBody = document.createElement('tbody');
-
     for (let i = 0; i < array.length; i++) {
         let row = document.createElement('tr');
         for (let key in array[i]) {
@@ -100,7 +96,6 @@ function addNewWorker(el) {
     newObjectUser.dzial = document.querySelector('#dzial').value;
     newObjectUser.wynagrodzenieKwota = document.querySelector('#wynagrodzenie').value;
     newObjectUser.wynagrodzenieWaluta = 'PLN';
-
     pracownicy.push(newObjectUser);
 
     let tBody = document.querySelector('tbody');
@@ -169,8 +164,6 @@ function sum(array) {
     let itSumP = document.createElement('p');
     let adminSumP = document.createElement('p');
     let handlowiecSumP = document.createElement('p');
-
-
 
     totalSumP.innerHTML = 'Całkowita suma wynagrodzeń: ' + sumsArray[0] + ' PLN';
     itSumP.innerHTML = 'Suma wynagrodzeń dział IT: ' + sumsArray[1] + ' PLN';
@@ -312,7 +305,6 @@ function searchData(el) {
 //MAIN SEARCH FUNCTION
 function searchOsoba(array, osobaValue, dzialValue, a, b) {
     let wynik = new Set();
-
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
@@ -330,7 +322,6 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
         alert('Nie znaleziono pracowników!')
     }
     return arrayWynik;
-
 }
 
 // validate forms function

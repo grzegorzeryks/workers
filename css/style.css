@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
 div {
     background: whitesmoke;
 }
@@ -18,48 +19,53 @@ input {
     padding-left: 12px;
 }
 
-label{
- padding: 0 10px 0 10px;
+label {
+    padding: 0 10px 0 10px;
 }
 
-fieldset
-{
-  background-color:rgb(240, 239, 239);
-  border:none;	
-  padding:16px;	
+fieldset {
+    background-color: rgb(240, 239, 239);
+    border: none;
+    padding: 16px;
 }
 
 legend {
     font-weight: bold;
 }
 
-.sums{
-    padding:  0 0 20px 10px;
+.sums {
+    padding: 0 0 20px 10px;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
-  }
-  
-td, th {
+}
+
+td,
+th {
     border: 1px solid #ddd;
     padding: 8px;
-  }
- tr:nth-child(even){background-color: #f2f2f2;}
-  
- tr:hover {background-color: #ddd;}
-  
- th {
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: rgb(76, 78, 175);
     color: white;
-  }
+}
 
-  button {
-    background-color: rgb(76, 78, 175); 
+button {
+    background-color: rgb(76, 78, 175);
     border: none;
     color: white;
     padding: 8px 32px;
@@ -67,12 +73,12 @@ td, th {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  
     cursor: pointer;
     margin-left: 10px;
 }
+
 button:hover {
-    background-color: rgb(93, 95, 216); 
+    background-color: rgb(93, 95, 216);
 }
 
 select {
@@ -82,4 +88,3 @@ select {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
