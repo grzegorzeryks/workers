@@ -312,7 +312,7 @@ function searchData(el) {
 //MAIN SEARCH FUNCTION
 function searchOsoba(array, osobaValue, dzialValue, a, b) {
     let wynik = new Set();
- 
+
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
@@ -326,8 +326,9 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
         }
     }
     let arrayWynik = Array.from(wynik);
-console.log(arrayWynik);
-
+    if (arrayWynik === []) {
+        alert('Nie znaleziono pracowników!')
+    }
     return arrayWynik;
 
 }
@@ -348,4 +349,3 @@ sum(pracownicy);
 createSearchEngine();
 
 // walidacja
-// stylowanie
