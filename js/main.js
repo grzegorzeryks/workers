@@ -35,9 +35,6 @@ let pracownicy = [{
     },
 ]
 
-
-
-
 // CREATE AND RENDER WORKERS TABLE
 function createWorkersTable(array, divName) {
     let workersTableDiv = document.createElement('div');
@@ -314,20 +311,25 @@ function searchData(el) {
 
 //MAIN SEARCH FUNCTION
 function searchOsoba(array, osobaValue, dzialValue, a, b) {
-    let wynik = [];
+    let wynik = new Set();
+ 
     for (let i = 0; i < array.length; i++) {
         for (const key in array[i]) {
             if (array[i][key] === osobaValue || array[i][key] === dzialValue) {
-                wynik.push(array[i]);
+                wynik.add(array[i]);
             }
         }
     }
     for (let i = 0; i < array.length; i++) {
         if ((parseFloat(array[i].wynagrodzenieKwota) >= a) && (parseFloat(array[i].wynagrodzenieKwota) <= b)) {
-            wynik.push(array[i]);
+            wynik.add(array[i]);
         }
     }
-    return wynik;
+    let arrayWynik = Array.from(wynik);
+console.log(arrayWynik);
+
+    return arrayWynik;
+
 }
 
 // validate forms function
