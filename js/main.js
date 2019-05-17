@@ -276,7 +276,6 @@ function createSearchDzial(array) {
 //SEARCH ENGINE GENERATOR
 function searchData(el) {
     el.preventDefault();
-    validateForm();
 
     // removing previous table with search effects
     let searchDiv = document.querySelector('.search');
@@ -318,19 +317,22 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
         }
     }
     let arrayWynik = Array.from(wynik);
+    if(!(arrayWynik[0])){
+        alert('Nie znaleziono pracowników!')
+    }
     return arrayWynik;
 }
 
 // validate forms function
-function validateForm() {
-    let osoba = document.forms["search-form"]["osoba"].value;
-    let dzial = document.forms["search-form"]["dzial-search"].value;
-    let zarobkiOd = document.forms["search-form"]["zarobki-od"].value;
-    let zarobkiDo = document.forms["search-form"]["zarobki-do"].value;
-    if (osoba == '' && dzial === 'wybierz' && zarobkiOd === '' && zarobkiDo === '') {
-        alert("Wpisz dane!");
-    }
-}
+// function validateForm() {
+//     let osoba = document.forms["search-form"]["osoba"].value;
+//     let dzial = document.forms["search-form"]["dzial-search"].value;
+//     let zarobkiOd = document.forms["search-form"]["zarobki-od"].value;
+//     let zarobkiDo = document.forms["search-form"]["zarobki-do"].value;
+//     if (osoba == '' && dzial === 'wybierz' && zarobkiOd === '' && zarobkiDo === '') {
+//         alert("Wpisz dane!");
+//     }
+// }
 
 createWorkersTable(pracownicy, '.workers-table');
 sum(pracownicy);
