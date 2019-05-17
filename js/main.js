@@ -323,16 +323,6 @@ function searchOsoba(array, osobaValue, dzialValue, a, b) {
     return arrayWynik;
 }
 
-// validate forms function
-// function validateForm() {
-//     let osoba = document.forms["search-form"]["osoba"].value;
-//     let dzial = document.forms["search-form"]["dzial-search"].value;
-//     let zarobkiOd = document.forms["search-form"]["zarobki-od"].value;
-//     let zarobkiDo = document.forms["search-form"]["zarobki-do"].value;
-//     if (osoba == '' && dzial === 'wybierz' && zarobkiOd === '' && zarobkiDo === '') {
-//         alert("Wpisz dane!");
-//     }
-// }
 
 createWorkersTable(pracownicy, '.workers-table');
 sum(pracownicy);
